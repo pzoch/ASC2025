@@ -86,6 +86,7 @@ summary(ur.df(y_short, type="trend", lags=4))
 summary(ur.df(dy_short, type="drift", lags=4))
 
 # BG test - ADF
+
 reg_df = dynlm(dy ~ lag(y,-1) - 1) 
 summary(reg_df)
 resid  = zoo(resid(reg_df), data_pl$date)

@@ -5,7 +5,7 @@ require(urca)
 require(fpp2)
 
 # generate AR(2)
-v_rho  <- c(1,0)
+v_rho  <- c(1.0,0.0)
 sigma2 <- 1
 
 # simulation
@@ -22,12 +22,21 @@ x[2] = v_rho[1]*x[1] +  rnorm(1,mean = 0, sd = sqrt(sigma2))
 
 ts.plot(x)
 
+acf(x)
+pacf(x)
+
+
+
 # Test DF
 ########################################
 dx <- diff(x) 
 
 ts.plot(dx)
+
+
 df_test1 <- ur.df(x, type="none", lags=0)
+
+
 ts.plot(df_test1@res)
 
 ggAcf(df_test1@res)
