@@ -9,7 +9,7 @@ require(pracma)
 require(TSstudio)
 
 # load data
-input_dir  = "C:/users/Piotr/Dropbox/WNE/ASC_2023/data/"
+input_dir  = "C:/users/Piotr/Dropbox/WNE/ASC_2025/data/"
 data_us     = read.csv(file = paste0(input_dir, "CPI_US_NSA.csv"))
 colnames(data_us) = c("date","Pi")
 
@@ -73,10 +73,12 @@ accuracy(f_snaive, data_test)
 
 # time series cross-test
 
+errors_tsCV <- tsCV(data_train, forecastfunction=naive, h=1)
+errors_base <- residuals(naive(data_train, h=1))
+
 errors_tsCV <- tsCV(data_train, forecastfunction=hw, h=1,"alpha"=0.45,"beta"=0.1,"gamma"=0.50,seasonal="additive")
-
-
 errors_base <- residuals(hw(data_train, h=1,"alpha"=0.45,"beta"=0.1,"gamma"=0.50,seasonal="additive"))
+
 
 rmse_tsCV <- sqrt(mean(errors_tsCV^2, na.rm=TRUE))
 rmse_base <- sqrt(mean(errors_base^2, na.rm=TRUE))

@@ -10,7 +10,7 @@ require(tidyverse)
 require(dplyr)
 
 # load data
-input_dir  = "D:/Dropbox (Personal)/WNE/ASC_2024/data/"
+input_dir  = "D:/Dropbox (Personal)/WNE/ASC_2025/data/"
 data_pl     = read.csv(file = paste0(input_dir, "GDP_POLAND.csv"))
 colnames(data_pl) = c("date","Y")
 
