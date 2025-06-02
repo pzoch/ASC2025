@@ -124,5 +124,11 @@ dfs <- length(coef(model_general)) - length(coef(model_specific))
 teststat<--2*(as.numeric(lspec-lgen))
 pchisq(teststat,df=dfs,lower.tail=FALSE)  
 
+forecast_arima <- forecast(model_aic, h = length(data_test.EPU))
+forecast_hw  <- forecast(f_hw_opt, h = length(data_test.EPU))
+accuracy_arima <- accuracy(forecast_aic, data_test.EPU)
+accuracy_hw<- accuracy(forecast_hw, data_test.EPU)
 
+print(accuracy_arima)
+print(accuracy_hw)
 
