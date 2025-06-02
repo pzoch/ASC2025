@@ -41,8 +41,8 @@ data_testing.y_arma <- window(y_arma, start = c(2019, 1))
   model  <- arima(data_training.y_arma, order = c(2,0,0), method = "ML")
   
   # more specifications
-  model_plusar  <- arima(data_training.Pi, order = c(3,0,0), method = "ML")
-  model_plusma  <- arima(data_training.Pi, order = c(2,0,1), method = "ML")
+  model_plusar  <- arima(data_training.y_arma, order = c(3,0,0), method = "ML")
+  model_plusma  <- arima(data_training.y_arma, order = c(2,0,1), method = "ML")
   coeftest(model)
   coeftest(model_plusar)
   coeftest(model_plusma)
